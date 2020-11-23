@@ -35,7 +35,7 @@ def get_arguments() -> argparse.Namespace:
 
     parser = argparse.ArgumentParser(
         description="""
-        train a network for image classification with EASI score Dataset.
+        train a network for image classification with KMNIST Dataset.
         """
     )
     parser.add_argument("config", type=str, help="path of a config file")

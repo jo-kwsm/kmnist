@@ -28,7 +28,7 @@ def get_class_num(train_ids: List[int]) -> torch.Tensor:
 
 
 def get_class_weight(train_ids: List[int]) -> torch.Tensor:
-    """Class weight for CrossEntropy in EASI score Dataset Class
+    """Class weight for CrossEntropy in KMNIST Dataset Class
     weight is calculated in the way described in:
     D. Eigen and R. Fergus, “Predicting depth, surface normals and semantic labels
     with a common multi-scale convolutional architecture,” in ICCV 2015,
