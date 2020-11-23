@@ -26,7 +26,7 @@ class Config:
     learning_rate: float = 0.003
 
     train_imgs: str = "./dataset/kmnist/kmnist-train-imgs.npz"
-    train_ids: str = "./dataset/kmnist/kmnist-train-labes.npz"
+    train_ids: str = "./dataset/kmnist/kmnist-train-labels.npz"
     test_imgs: str = "./dataset/kmnist/kmnist-test-imgs.npz"
     test_ids: str = "./dataset/kmnist/kmnist-test-labels.npz"
 

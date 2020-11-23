@@ -1,5 +1,8 @@
 import pandas as pd
+import numpy as np
 import torch
+
+from typing import List
 
 
 def get_class_num(train_ids: List[int]) -> torch.Tensor:
@@ -9,7 +12,7 @@ def get_class_num(train_ids: List[int]) -> torch.Tensor:
         train_ids: list of train ids
     """
 
-    n_classes = len(train_ids.unique())
+    n_classes = len(np.unique(train_ids))
 
     nums = {}
     for i in range(n_classes):

@@ -6,7 +6,7 @@ import torch
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
 
-from src.libs.class_id_map import get_id2cls_map
+from libs.class_id_map import get_id2cls_map
 
 __all__ = ["get_dataloader"]
 
@@ -41,7 +41,7 @@ def get_dataloader(
 
 class KMnistDataset(Dataset):
     def __init__(
-        self, imges: List[int], ids: List[int], transform: Optional[transforms.Compose] = None
+        self, imgs: List[int], ids: List[int], transform: Optional[transforms.Compose] = None
     ) -> None:
         super().__init__()
 
@@ -52,7 +52,7 @@ class KMnistDataset(Dataset):
         self.id2cls_map = get_id2cls_map()
 
     def __len__(self) -> int:
-        return len(self.df)
+        return len(self.imgs)
 
     def __getitem__(self, idx: int) -> Dict[str, Any]:
         img = self.imgs[idx]
