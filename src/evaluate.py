@@ -94,7 +94,7 @@ def main() -> None:
     model.load_state_dict(state_dict)
 
     # criterion for loss
-    criterion = get_criterion(config.use_class_weight, config.train_ids, device)
+    criterion = get_criterion(config.use_class_weight, train_ids, device)
 
     # train and validate model
     print(f"---------- Start evaluation for {args.mode} data ----------")
