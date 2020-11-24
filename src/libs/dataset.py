@@ -2,6 +2,8 @@ import os
 from typing import Any, Dict, Optional, List
 
 import pandas as pd
+import numpy as np
+from PIL import Image
 import torch
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
@@ -56,6 +58,7 @@ class KMnistDataset(Dataset):
 
     def __getitem__(self, idx: int) -> Dict[str, Any]:
         img = self.imgs[idx]
+        img = Image.fromarray(np.uint8(img))
         if self.transform is not None:
             img = self.transform(img)
 

@@ -80,7 +80,7 @@ def main() -> None:
     val_transform = Compose([ToTensor(), Normalize(mean=get_mean(), std=get_std())])
 
     imgs = np.load(config.train_imgs)["arr_0"]
-    imgs = imgs.reshape(-1,28,28,1)
+    imgs = imgs.reshape(-1,28,28)
     ids = np.load(config.train_ids)["arr_0"]
     train_imgs, val_imgs, train_ids, val_ids = train_test_split(imgs, ids, test_size=0.1, random_state=random_seed, stratify=ids)
 
@@ -110,6 +110,7 @@ def main() -> None:
 
     # define a model
     model = get_model(config.model, n_classes, pretrained=config.pretrained)
+    print(model)
 
     # send the model to cuda/cpu
     model.to(device)

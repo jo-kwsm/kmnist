@@ -1,4 +1,4 @@
-python src/utils/make_configs.py --model resnet18 resnet34 resnet50 --learning_rate 0.003 0.0003
+python src/utils/make_configs.py --model resnet18 resnet34 resnet50 --learning_rate 0.003 0.0003 --width 28 --height 28
 
 files="./result/*"
 for filepath in $files; do
