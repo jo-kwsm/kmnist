@@ -110,7 +110,6 @@ def main() -> None:
 
     # define a model
     model = get_model(config.model, n_classes, pretrained=config.pretrained)
-    print(model)
 
     # send the model to cuda/cpu
     model.to(device)
