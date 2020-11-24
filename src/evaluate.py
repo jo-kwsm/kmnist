@@ -64,7 +64,7 @@ def main() -> None:
     ids = np.load(config.train_ids)["arr_0"]
     train_imgs, val_imgs, train_ids, val_ids = train_test_split(imgs, ids, test_size=0.1, random_state=random_seed, stratify=ids)
     test_imgs = np.load(config.test_imgs)["arr_0"]
-    test_imgs = imgs.reshape(-1,28,28)
+    test_imgs = test_imgs.reshape(-1,28,28)
     test_ids = np.load(config.test_ids)["arr_0"]
 
     loader = get_dataloader(
