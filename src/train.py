@@ -23,6 +23,7 @@ from libs.config import get_config
 from libs.dataset import get_dataloader
 from libs.device import get_device
 from libs.helper import evaluate, train
+from libs.graph import make_graphs
 from libs.loss_fn import get_criterion
 from libs.mean_std import get_mean, get_std
 from libs.models import get_model
@@ -62,6 +63,11 @@ def main() -> None:
     # save log files in the directory which contains config file.
     result_path = os.path.dirname(args.config)
     experiment_name = os.path.basename(result_path)
+
+    # if a experiment has already done, train won't start.
+    if os.path.exists(os.path.join(result_path, "final_model.prm")):
+        print("Already done.")
+        return
 
     # cpu or cuda
     device = get_device(allow_only_gpu=True)
@@ -206,6 +212,7 @@ def main() -> None:
 
         log = log.append(tmp, ignore_index=True)
         log.to_csv(os.path.join(result_path, "log.csv"), index=False)
+        make_graphs(os.path.join(result_path, "log.csv"))
 
         # save logs to wandb
         if not args.no_wandb:
