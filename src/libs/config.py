@@ -17,11 +17,11 @@ class Config:
 
     batch_size: int = 32
 
-    width: int = 224
-    height: int = 224
+    width: int = 28
+    height: int = 28
 
     num_workers: int = 2
-    max_epoch: int = 50
+    max_epoch: int = 100
 
     learning_rate: float = 0.003
 
