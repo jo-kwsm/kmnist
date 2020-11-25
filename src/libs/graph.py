@@ -1,5 +1,5 @@
 import argparse
-import dataclasses
+import os
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -26,13 +26,13 @@ def make_line(data_name:str, data:pd.DataFrame, save_dir:str) -> None:
     plt.xlabel("epoch")
     plt.ylabel(data_name)
     plt.legend()
-    save_path = save_dir + data_name + ".png"
+    save_path = os.path.join(save_dir, data_name + ".png")
     plt.savefig(save_path)
 
 
 def make_graphs(log_path:str) -> None:
     logs = pd.read_csv(log_path)
-    save_dir = "/".join(log_path.split("/")[:-1]) + "/"
+    save_dir = os.path.dirname(log_path)
     make_line("loss", logs, save_dir)
     make_line("acc@1", logs, save_dir)
 
