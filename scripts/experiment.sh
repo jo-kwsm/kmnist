@@ -1,4 +1,5 @@
-python src/utils/make_configs.py --model resnet18 resnet34 resnet50 --learning_rate 0.0001 0.0005 0.001 0.005
+python src/utils/make_configs.py --model vgg11 --learning_rate 0.0001 0.0005 0.001 0.005 --size 224
+python src/utils/make_configs.py --model resnet18 resnet34 --learning_rate 0.0001 0.0005 0.001 0.005
 
 files="./result/*"
 for filepath in $files; do
