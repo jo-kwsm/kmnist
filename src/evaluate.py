@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 import torch
-from torchvision.transforms import Compose, Normalize, ToTensor
+from torchvision.transforms import Compose, Normalize, Resize, ToTensor
 
 from libs.class_id_map import get_cls2id_map
 from libs.config import get_config
@@ -57,7 +57,13 @@ def main() -> None:
     # Dataloader
     assert args.mode in ["validation", "test"]
 
-    transform = Compose([ToTensor(), Normalize(mean=get_mean(), std=get_std())])
+    transform = Compose(
+        [
+            Resize(config.size),
+            ToTensor(),
+            Normalize(mean=get_mean(), std=get_std())
+        ]
+    )
 
     imgs = np.load(config.train_imgs)["arr_0"]
     imgs = imgs.reshape(-1,28,28)

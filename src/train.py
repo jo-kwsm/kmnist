@@ -75,7 +75,7 @@ def main() -> None:
     # Dataloader
     train_transform = Compose(
         [
-            Resize(size=(args.size, args.size)),
+            Resize(config.size),
             RandomRotation(degrees=10),
             ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),
             ToTensor(),
@@ -85,7 +85,7 @@ def main() -> None:
 
     val_transform = Compose(
         [
-            Resize(size=(args.size, args.size)),
+            Resize(config.size),
             ToTensor(),
             Normalize(mean=get_mean(), std=get_std())
         ]
