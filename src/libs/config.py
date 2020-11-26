@@ -20,8 +20,8 @@ class Config:
     width: int = 28
     height: int = 28
 
-    num_workers: int = 2
-    max_epoch: int = 100
+    num_workers: int = 8
+    max_epoch: int = 400
 
     learning_rate: float = 0.003
 
