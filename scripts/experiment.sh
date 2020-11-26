@@ -8,3 +8,5 @@ for filepath in $files; do
         python src/evaluate.py "${filepath}/config.yaml" test
     fi
 done
+
+python src/utils/make_final_result.py result/

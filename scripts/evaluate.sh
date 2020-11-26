@@ -5,3 +5,5 @@ for filepath in $files; do
         python src/libs/graph.py "${filepath}/log.csv"
     fi
 done
+
+python src/utils/make_final_result.py result/

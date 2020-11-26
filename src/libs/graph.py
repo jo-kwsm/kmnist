@@ -11,7 +11,7 @@ def get_arguments() -> argparse.Namespace:
 
     parser = argparse.ArgumentParser(
         description="""
-                    make graphs for trainning logs.
+                    make graphs for training logs.
                     """
     )
     parser.add_argument("log", type=str, default=None, help="path of a log file")
