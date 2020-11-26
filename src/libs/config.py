@@ -17,8 +17,7 @@ class Config:
 
     batch_size: int = 32
 
-    width: int = 28
-    height: int = 28
+    size: int = 28
 
     num_workers: int = 8
     max_epoch: int = 400

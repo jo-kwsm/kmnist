@@ -12,8 +12,8 @@ from torchvision.transforms import (
     ColorJitter,
     Compose,
     Normalize,
-    RandomHorizontalFlip,
-    RandomResizedCrop,
+    RandomRotation,
+    Resize,
     ToTensor,
 )
 
@@ -75,15 +75,21 @@ def main() -> None:
     # Dataloader
     train_transform = Compose(
         [
-            RandomResizedCrop(size=(config.height, config.width)),
-            RandomHorizontalFlip(),
-            ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.1),
+            Resize(size=(args.size, args.size)),
+            RandomRotation(degrees=10),
+            ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),
             ToTensor(),
             Normalize(mean=get_mean(), std=get_std()),
         ]
     )
 
-    val_transform = Compose([ToTensor(), Normalize(mean=get_mean(), std=get_std())])
+    val_transform = Compose(
+        [
+            Resize(size=(args.size, args.size)),
+            ToTensor(),
+            Normalize(mean=get_mean(), std=get_std())
+        ]
+    )
 
     imgs = np.load(config.train_imgs)["arr_0"]
     imgs = imgs.reshape(-1,28,28)

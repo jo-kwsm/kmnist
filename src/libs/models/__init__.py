@@ -3,7 +3,7 @@ import torchvision
 
 __all__ = ["get_model"]
 
-model_names = ["resnet18", "resnet34", "resnet50", "vgg16", "inception_v3"]
+model_names = ["vgg11", "resnet18", "resnet34"]
 
 
 def get_model(name: str, n_classes: int, pretrained: bool = True) -> nn.Module:
@@ -11,7 +11,7 @@ def get_model(name: str, n_classes: int, pretrained: bool = True) -> nn.Module:
     if name not in model_names:
         raise ValueError(
             """There is no model appropriate to your choice.
-            You have to choose resnet18, resnet34, resnet50 as a model.
+            You have to choose vgg11, resnet18, resnet34 as a model.
             """
         )
 
