@@ -1,4 +1,4 @@
-python src/utils/make_configs.py --model easynet resnet18 resnet34
+python src/utils/make_configs.py --model easynet resnet18 resnet34 --degrees 0 10 --translate 0 0.1
 
 files="./result/*"
 for filepath in $files; do

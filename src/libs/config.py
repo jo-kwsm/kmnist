@@ -22,6 +22,9 @@ class Config:
     num_workers: int = 8
     max_epoch: int = 100
 
+    degrees: int = 0
+    translate: float = 0
+
     learning_rate: float = 0.003
 
     train_imgs: str = "./dataset/kmnist/kmnist-train-imgs.npz"

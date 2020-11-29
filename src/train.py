@@ -12,7 +12,7 @@ from torchvision.transforms import (
     ColorJitter,
     Compose,
     Normalize,
-    RandomRotation,
+    RandomAffine,
     Resize,
     ToTensor,
 )
@@ -76,8 +76,7 @@ def main() -> None:
     train_transform = Compose(
         [
             Resize(config.size),
-            RandomRotation(degrees=10),
-            ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),
+            RandomAffine(degrees=config.degrees, translate=(config.translate, config.translate)),
             ToTensor(),
             Normalize(mean=get_mean(), std=get_std()),
         ]
