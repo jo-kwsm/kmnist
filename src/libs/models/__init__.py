@@ -1,9 +1,11 @@
 import torch.nn as nn
 import torchvision
 
+from libs.models.net import EasyNet
+
 __all__ = ["get_model"]
 
-model_names = ["vgg11", "resnet18", "resnet34"]
+model_names = ["resnet18", "resnet34", "easynet"]
 
 
 def get_model(name: str, n_classes: int, pretrained: bool = True) -> nn.Module:
@@ -14,6 +16,10 @@ def get_model(name: str, n_classes: int, pretrained: bool = True) -> nn.Module:
             You have to choose vgg11, resnet18, resnet34 as a model.
             """
         )
+
+    if name == "easynet":
+        model = EasyNet()
+        return model
 
     print("{} will be used as a model.".format(name))
     model = getattr(torchvision.models, name)(pretrained=pretrained)
