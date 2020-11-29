@@ -20,7 +20,7 @@ class Config:
     size: int = 28
 
     num_workers: int = 8
-    max_epoch: int = 400
+    max_epoch: int = 100
 
     learning_rate: float = 0.003
 
