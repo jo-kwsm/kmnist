@@ -3,6 +3,11 @@ from typing import List, Tuple
 import torch
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def calc_accuracy(
     output: torch.Tensor, target: torch.Tensor, topk: Tuple[int] = (1,)
 ) -> List[float]:

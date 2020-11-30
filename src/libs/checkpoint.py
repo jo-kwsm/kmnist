@@ -6,6 +6,11 @@ import torch.nn as nn
 import torch.optim as optim
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def save_checkpoint(
     result_path: str,
     epoch: int,

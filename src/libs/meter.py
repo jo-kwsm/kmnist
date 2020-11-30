@@ -1,6 +1,11 @@
 from typing import List
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 class AverageMeter(object):
     """Computes and stores the average and current value."""
 

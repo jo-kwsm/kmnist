@@ -8,6 +8,11 @@ __all__ = ["get_model"]
 model_names = ["resnet18", "resnet34", "easynet"]
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def get_model(name: str, n_classes: int, pretrained: bool = True) -> nn.Module:
     name = name.lower()
     if name not in model_names:

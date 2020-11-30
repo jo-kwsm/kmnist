@@ -14,6 +14,11 @@ from typing import Any, Dict, List, Tuple
 from libs.config import Config
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def get_arguments() -> argparse.Namespace:
     """parse all the arguments from command line inteface return a list of
     parsed arguments."""

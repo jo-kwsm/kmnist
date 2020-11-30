@@ -8,6 +8,11 @@ from .class_weight import get_class_weight
 __all__ = ["get_criterion"]
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def get_criterion(
     use_class_weight: bool = False,
     train_ids: List[int] = None,

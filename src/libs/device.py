@@ -1,6 +1,11 @@
 import torch
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def get_device(allow_only_gpu: bool = True):
     if torch.cuda.is_available():
         device = "cuda"

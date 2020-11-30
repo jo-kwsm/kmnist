@@ -7,6 +7,11 @@ import yaml
 __all__ = ["get_config"]
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 @dataclasses.dataclass
 class Config:
     model: str

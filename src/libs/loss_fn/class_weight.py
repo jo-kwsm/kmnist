@@ -5,6 +5,11 @@ import torch
 from typing import List
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def get_class_num(train_ids: List[int]) -> torch.Tensor:
     """
     get the number of samples in each class

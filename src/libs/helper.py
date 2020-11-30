@@ -14,6 +14,11 @@ from .metric import calc_accuracy
 __all__ = ["train", "evaluate"]
 
 
+"""
+Copyright (c) 2020 yiskw713
+"""
+
+
 def do_one_iteration(
     sample: Dict[str, Any],
     model: nn.Module,
