@@ -1,0 +1,14 @@
+batch_size: 32
+degrees: 0
+learning_rate: 0.003
+max_epoch: 100
+model: benchmarknet
+num_workers: 8
+pretrained: true
+size: 28
+test_ids: ./dataset/kmnist/kmnist-test-labels.npz
+test_imgs: ./dataset/kmnist/kmnist-test-imgs.npz
+train_ids: ./dataset/kmnist/kmnist-train-labels.npz
+train_imgs: ./dataset/kmnist/kmnist-train-imgs.npz
+translate: 0.1
+use_class_weight: true
