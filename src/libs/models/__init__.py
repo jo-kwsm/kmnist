@@ -1,11 +1,11 @@
 import torch.nn as nn
 import torchvision
 
-from libs.models.net import EasyNet
+from libs.models.net import EasyNet, BenchmarkNet
 
 __all__ = ["get_model"]
 
-model_names = ["resnet18", "resnet34", "easynet"]
+model_names = ["resnet18", "resnet34", "easynet", "benchmarknet"]
 
 
 """
@@ -24,6 +24,10 @@ def get_model(name: str, n_classes: int, pretrained: bool = True) -> nn.Module:
 
     if name == "easynet":
         model = EasyNet()
+        return model
+    
+    if name == "benchmarknet":
+        model = BenchmarkNet()
         return model
 
     print("{} will be used as a model.".format(name))
