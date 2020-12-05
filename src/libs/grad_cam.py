@@ -7,12 +7,10 @@ class KmnistGradCAM:
     def __init__(self, model: nn.Module, model_name: str):
         self.adapt = model_name.startswith("resnet")
         if self.adapt:
-            target_layer = model.layer1
+            target_layer = model.layer4[1].conv1
             self.gradcam = GradCAM(model, target_layer)
             self.gradcam_pp = GradCAMpp(model, target_layer)
 
-    # def get_target_layer(self, model_name: str):
-        
 
     def __call__(self, x):
         if self.adapt:
