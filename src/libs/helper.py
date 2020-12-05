@@ -7,9 +7,12 @@ import torch.nn as nn
 import torch.optim as optim
 from sklearn.metrics import confusion_matrix, f1_score
 from torch.utils.data import DataLoader
+from torchvision.utils import make_grid
+import torchvision.transforms as transforms
 
 from .meter import AverageMeter, ProgressMeter
 from .metric import calc_accuracy
+from .grad_cam import KmnistGradCAM
 
 __all__ = ["train", "evaluate"]
 
@@ -120,7 +123,7 @@ def train(
 
 
 def evaluate(
-    loader: DataLoader, model: nn.Module, criterion: Any, device: str
+    loader: DataLoader, model: nn.Module, criterion: Any, device: str, model_name: str, n_cam: int=10
 ) -> Tuple[float, float, float, np.ndarray]:
     losses = AverageMeter("Loss", ":.4e")
     top1 = AverageMeter("Acc@1", ":6.2f")
@@ -135,6 +138,10 @@ def evaluate(
 
     # switch to evaluate mode
     model.eval()
+
+    gradcam = KmnistGradCAM(model, model_name)
+    p_cam_imgs = []
+    n_cam_imgs = []
 
     with torch.no_grad():
         for sample in loader:
@@ -154,6 +161,26 @@ def evaluate(
                 pred,
                 labels=[i for i in range(n_classes)],
             )
+
+            if gt==pred:
+                if len(p_cam_imgs) < n_cam:
+                    x = sample["img"].to(device)
+                    p_cam_imgs.append(gradcam(x))
+            else:
+                if len(n_cam_imgs) < n_cam:
+                    x = sample["img"].to(device)
+                    n_cam_imgs.append(gradcam(x))
+    if p_cam_imgs[0] is not None:
+        p_cam_imgs = np.concatenate(np.asarray(p_cam_imgs))
+        n_cam_imgs = np.concatenate(np.asarray(n_cam_imgs))
+
+        n_row=len(p_cam_imgs)//n_cam
+
+        p_grid_image = make_grid(p_cam_imgs, nrow=n_row)
+        n_grid_image = make_grid(n_cam_imgs, nrow=n_row)
+
+        print(transforms.ToPILImage()(p_grid_image))
+        print(transforms.ToPILImage()(n_grid_image))
 
     f1s = f1_score(gts, preds, average="macro")
 

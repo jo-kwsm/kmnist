@@ -111,7 +111,7 @@ def main() -> None:
     print(f"---------- Start evaluation for {args.mode} data ----------")
 
     # evaluation
-    loss, acc1, f1s, c_matrix = evaluate(loader, model, criterion, device)
+    loss, acc1, f1s, c_matrix = evaluate(loader, model, criterion, device, config.model)
 
     print("loss: {:.5f}\tacc1: {:.2f}\tF1 Score: {:.2f}".format(loss, acc1, f1s))
 
