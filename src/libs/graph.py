@@ -25,6 +25,8 @@ def make_line(data_name:str, data:pd.DataFrame, save_dir:str) -> None:
     plt.plot(data["val_" + data_name], label="val")
     plt.xlabel("epoch")
     plt.ylabel(data_name)
+    if data_name=="loss":
+        plt.ylim(0,min(max(data["train_" + data_name].max(), data["val_" + data_name].max()),1))
     plt.legend()
     save_path = os.path.join(save_dir, data_name + ".png")
     plt.savefig(save_path)
