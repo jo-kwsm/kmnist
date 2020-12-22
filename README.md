@@ -14,3 +14,6 @@ sh scripts/experiment.sh
 # Requirements
 
 Please install from requirements.txt.
+
+# Reference
+I made the repository based on [this](https://github.com/yiskw713/pytorch_template).
